@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:pet/ui/login/login.dart';
 
 class Splash extends StatefulWidget {
   @override
@@ -15,7 +16,7 @@ class _SplashState extends State<Splash> {
     // TODO: implement initState
     super.initState();
     // validApp();
-    //startTimer();
+    startTimer();
   }
 
   void getLogin() async {
@@ -142,10 +143,10 @@ class _SplashState extends State<Splash> {
 
   void startTimer() async {
     Future.delayed(Duration(seconds: 3), () {
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => Login()),
-      // );
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Login()),
+      );
     });
   }
 }
