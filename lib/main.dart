@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'ui/splash/splas.dart';
-
 void main() {
   runApp(const MyApp());
 }
