@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProfileUI extends StatelessWidget {
@@ -13,12 +14,12 @@ class ProfileUI extends StatelessWidget {
       "Logout",
     ];
 
-    List iconsList = [
-      const Icon(Icons.calendar_today_rounded),
-      const Icon(Icons.person),
-      const Icon(Icons.share),
-      const Icon(Icons.star_rate),
-      const Icon(Icons.login_outlined),
+    List<String> iconsList = [
+      "assets/lounges/icoun/calendar check.png",
+      "assets/lounges/icoun/custmer servies.png",
+      "assets/lounges/icoun/conection.png",
+      "assets/lounges/icoun/star.png",
+      "assets/lounges/icoun/logout.png"
     ];
 
     double appHeight = MediaQuery.of(context).size.height;
@@ -27,36 +28,41 @@ class ProfileUI extends StatelessWidget {
       body: Container(
         height: appHeight,
         width: appWidth,
+        padding: EdgeInsets.fromLTRB(20, appHeight * .225, 20, 0),
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(90.0),
                     child: CachedNetworkImage(
                       imageUrl:
                           "https://images.pexels.com/photos/302743/pexels-photo-302743.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-                      width: appWidth * 0.30,
+                      width: appWidth * 0.27,
                       fit: BoxFit.cover,
-                      height: appWidth * 0.30,
+                      height: appWidth * 0.27,
                       placeholder: (context, url) =>
                           const CircularProgressIndicator(),
                       errorWidget: (context, url, error) =>
                           Icon(Icons.image, size: appWidth * 0.30),
                     ),
                   ),
-                  const Text(
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
                     "SidKapse",
                     style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 22,
+                        color: Colors.black87.withOpacity(0.75),
+                        fontSize: 25,
                         fontWeight: FontWeight.bold),
                   ),
+                  const SizedBox(
+                    height: 5,
+                  ),
                   const Text(
-                    "Order History",
+                    "0987654321",
                     style: TextStyle(
                         color: Colors.grey,
                         fontSize: 18,
@@ -64,21 +70,28 @@ class ProfileUI extends StatelessWidget {
                   ),
                 ],
               ),
+              SizedBox(
+                height: appHeight * 0.030,
+              ),
               ListView.separated(
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Icon(
-                        Icons.calendar_today_rounded,
-                        size: 23,
-                        color: Colors.black,
+                      Image.asset(
+                        iconsList[index],
+                        height: 24,
+                        width: 24,
+                      ),
+                      const SizedBox(
+                        width: 15,
                       ),
                       Text(
                         listTitle[index],
                         style: const TextStyle(
-                            color: Colors.grey,
-                            fontSize: 20,
+                            color: Colors.black54,
+                            fontSize: 19,
                             fontWeight: FontWeight.w600),
                       ),
                     ],
@@ -87,7 +100,7 @@ class ProfileUI extends StatelessWidget {
                 itemCount: listTitle.length,
                 separatorBuilder: (context, index) {
                   return const SizedBox(
-                    width: 8,
+                    height: 18,
                   );
                 },
               ),

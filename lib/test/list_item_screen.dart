@@ -1,6 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+
+import '../utility/utility.dart';
 
 class OrderHistory extends StatelessWidget {
   const OrderHistory({Key? key}) : super(key: key);
@@ -13,23 +16,24 @@ class OrderHistory extends StatelessWidget {
       backgroundColor: const Color(0xFFF1F1F1),
       appBar: AppBar(
         centerTitle: true,
-        leading: const Icon(Icons.arrow_back_ios, color: Colors.black),
+        leading: const Icon(Icons.arrow_back_ios, color: buttonColor, size: 24),
         title: const Text(
           "Order History",
           style: TextStyle(
-              color: Colors.black, fontSize: 20, fontWeight: FontWeight.w500),
+              color: buttonColor, fontSize: 21, fontWeight: FontWeight.w500),
         ),
         backgroundColor: const Color(0xFFF1F1F1),
         elevation: 0,
       ),
       body: Container(
+        padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
         height: appHeight,
         width: appWidth,
         child: ListView.builder(
             itemCount: 10,
             itemBuilder: (context, index) {
               return Container(
-                margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                 padding: const EdgeInsets.fromLTRB(10, 14, 10, 7),
                 height: appHeight * 0.180,
                 decoration: BoxDecoration(
@@ -62,7 +66,7 @@ class OrderHistory extends StatelessWidget {
                             fit: BoxFit.cover,
                             height: appWidth * 0.21,
                             placeholder: (context, url) =>
-                                CircularProgressIndicator(),
+                                const CircularProgressIndicator(),
                             errorWidget: (context, url, error) =>
                                 Icon(Icons.image, size: appWidth * 0.21),
                           ),
@@ -77,12 +81,12 @@ class OrderHistory extends StatelessWidget {
                             ),
                           ),
                           padding: EdgeInsets.zero,
-                          color: Colors.greenAccent,
+                          color: index % 4 == 0 ? buttonColor : Colors.grey,
                           onPressed: () {},
                           child: const Text(
                             "Booking",
                             style: TextStyle(
-                              color: Colors.black,
+                              color: Colors.white,
                               fontSize: 16,
                             ),
                           ),
@@ -100,65 +104,75 @@ class OrderHistory extends StatelessWidget {
                         const Text(
                           "Tianjin Warner International Lounge",
                           style: TextStyle(
-                              color: Colors.black,
+                              color: buttonColor,
                               fontSize: 15,
                               fontWeight: FontWeight.w600),
                         ),
                         Row(
-                          children: const [
-                            Icon(Icons.access_time_rounded, size: 20),
-                            SizedBox(
+                          children: [
+                            Image.asset('assets/lounges/icoun/watch.png',
+                                width: 21, color: Colors.black),
+                            const SizedBox(
                               width: 7,
                             ),
-                            Text(
+                            const Text(
                               "8:24 AM",
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: buttonColor,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w600),
                             ),
                           ],
                         ),
                         Row(
-                          children: const [
-                            Icon(Icons.calendar_today_outlined, size: 20),
-                            SizedBox(
+                          children: [
+                            Image.asset(
+                              'assets/lounges/icoun/calendar 1.png',
+                              width: 19,
+                              color: Colors.black,
+                            ),
+                            const SizedBox(
                               width: 7,
                             ),
-                            Text(
+                            const Text(
                               "2022 - Mar - 20",
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: buttonColor,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w600),
                             ),
                           ],
                         ),
                         Row(
-                          children: const [
-                            Icon(Icons.location_on_rounded, size: 20),
-                            SizedBox(
+                          children: [
+                            Image.asset('assets/lounges/icoun/map.png',
+                                width: 19, color: Colors.black),
+                            const SizedBox(
                               width: 7,
                             ),
-                            Text(
+                            const Text(
                               "Address",
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: buttonColor,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w600),
                             ),
                           ],
                         ),
                         Row(
-                          children: const [
-                            Icon(Icons.share, size: 20),
-                            SizedBox(
+                          children: [
+                            Image.asset(
+                              'assets/lounges/icoun/conection.png',
+                              width: 19,
+                              color: Colors.black,
+                            ),
+                            const SizedBox(
                               width: 7,
                             ),
-                            Text(
+                            const Text(
                               "Share",
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: buttonColor,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w600),
                             ),
