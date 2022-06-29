@@ -50,7 +50,11 @@ class _LoginState extends State<Login> {
                       prefixIcon: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text("  +91  ", Colors.black),
+                          Text(
+                             "  +91  ",
+                            style: TextStyle(color: Colors.black),
+                          ),
+
                         ],
                       ),
                       counterText: "",
