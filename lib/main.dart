@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pet/test/list_of_product.dart';
-import 'package:pet/test/my_booking_screen.dart';
-import 'package:pet/ui/splash/splas.dart';
 
 void main() {
   runApp(const MyApp());

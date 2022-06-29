@@ -29,22 +29,20 @@ class LIstOfProduct extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.9),
-                  spreadRadius: 0.70,
-                  blurRadius: 7.5,
+                  spreadRadius: 0.40,
+                  blurRadius: 4.5,
                   // blurStyle: BlurStyle.inner,
                   offset: const Offset(0, 0),
                 ),
               ],
             ),
-            child: Image.asset('assets/lounges/icoun/list.png',
-                color: Colors.white, width: 16, scale: 2),
+            child: Image.asset('assets/lounges/icoun/list.png', color: Colors.white, width: 16, scale: 2.5),
           ),
         ),
         actions: [
           Padding(
             padding: EdgeInsets.only(right: appWidth * 0.035),
-            child: Image.asset('assets/lounges/icoun/notification.png',
-                color: borderColor, width: 28, scale: 1),
+            child: Image.asset('assets/lounges/icoun/notification.png', color: borderColor, width: 28, scale: 2.5),
           ),
         ],
         backgroundColor: backgroundColor,
@@ -85,8 +83,7 @@ class LIstOfProduct extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Image.asset('assets/lounges/icoun/search.png',
-                              color: borderColor, width: 18, scale: 1),
+                          Image.asset('assets/lounges/icoun/search.png', color: borderColor, width: 18, scale: 1),
                           SizedBox(
                             width: appWidth * 0.035,
                           ),
@@ -118,7 +115,7 @@ class LIstOfProduct extends StatelessWidget {
                         return Container(
                           margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                           // padding: const EdgeInsets.fromLTRB(10, 14, 10, 7),
-                          height: appHeight * 0.340,
+                          height: appHeight * 0.36,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: const BorderRadius.all(
@@ -138,26 +135,21 @@ class LIstOfProduct extends StatelessWidget {
                             children: [
                               ClipRRect(
                                 borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(15.0),
-                                    topRight: Radius.circular(15.0)),
+                                    topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0)),
                                 child: Container(
-                                  height: appHeight * 0.180,
+                                  height: appHeight * 0.160,
                                   width: appWidth,
                                   decoration: const BoxDecoration(
                                     color: Colors.purple,
                                     borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(15.0),
-                                        topRight: Radius.circular(15.0)),
+                                        topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0)),
                                   ),
                                   child: CachedNetworkImage(
                                     imageUrl:
                                         "https://lancasterpa.com/wp-content/uploads/2020/07/log-cabin-feature-logo-2.jpg",
                                     fit: BoxFit.fill,
-                                    placeholder: (context, url) =>
-                                        const CircularProgressIndicator(),
-                                    errorWidget: (context, url, error) => Icon(
-                                        Icons.image,
-                                        size: appWidth * 0.21),
+                                    placeholder: (context, url) => const CircularProgressIndicator(),
+                                    errorWidget: (context, url, error) => Icon(Icons.image, size: appWidth * 0.21),
                                   ),
                                 ),
                               ),
@@ -166,17 +158,14 @@ class LIstOfProduct extends StatelessWidget {
                                 child: Column(
                                   children: [
                                     Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Row(
                                           children: [
                                             Text(
                                               "My Lounge",
                                               style: TextStyle(
-                                                  color: textGrayColor,
-                                                  fontSize: 19,
-                                                  fontWeight: FontWeight.w700),
+                                                  color: textGrayColor, fontSize: 19, fontWeight: FontWeight.w700),
                                             ),
                                             const SizedBox(
                                               width: 8,
@@ -186,14 +175,11 @@ class LIstOfProduct extends StatelessWidget {
                                               height: appWidth * 0.060,
                                               decoration: BoxDecoration(
                                                 color: Colors.transparent,
-                                                borderRadius:
-                                                    const BorderRadius.all(
+                                                borderRadius: const BorderRadius.all(
                                                   Radius.circular(50.0),
                                                 ),
                                                 border: Border.all(
-                                                    color: textGrayColor,
-                                                    width: 1.7,
-                                                    style: BorderStyle.solid),
+                                                    color: textGrayColor, width: 1.7, style: BorderStyle.solid),
                                               ),
                                               child: Image.asset(
                                                 'assets/lounges/icoun/rupee.png',
@@ -209,9 +195,7 @@ class LIstOfProduct extends StatelessWidget {
                                             Text(
                                               "Renovation Date",
                                               style: TextStyle(
-                                                  color: textGrayColor,
-                                                  fontSize: 17,
-                                                  fontWeight: FontWeight.w700),
+                                                  color: textGrayColor, fontSize: 17, fontWeight: FontWeight.w700),
                                             ),
                                           ],
                                         ),
@@ -221,22 +205,17 @@ class LIstOfProduct extends StatelessWidget {
                                       height: 6,
                                     ),
                                     Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
                                           "Choitram, Indore",
                                           style: TextStyle(
-                                              color: textGrayColor,
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.w700),
+                                              color: textGrayColor, fontSize: 17, fontWeight: FontWeight.w700),
                                         ),
                                         Text(
                                           "02 May 2022",
                                           style: TextStyle(
-                                              color: textGrayColor,
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.w700),
+                                              color: textGrayColor, fontSize: 17, fontWeight: FontWeight.w700),
                                         ),
                                       ],
                                     ),
@@ -244,15 +223,12 @@ class LIstOfProduct extends StatelessWidget {
                                       height: 3,
                                     ),
                                     Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
                                         Text(
                                           "2.1 Km.",
                                           style: TextStyle(
-                                              color: textGrayColor,
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.w700),
+                                              color: textGrayColor, fontSize: 17, fontWeight: FontWeight.w700),
                                         ),
                                       ],
                                     ),
@@ -260,8 +236,7 @@ class LIstOfProduct extends StatelessWidget {
                                       height: 8,
                                     ),
                                     Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Row(
                                           children: [
@@ -269,16 +244,13 @@ class LIstOfProduct extends StatelessWidget {
                                               width: appWidth * 0.090,
                                               height: appWidth * 0.090,
                                               decoration: BoxDecoration(
-                                                color:
-                                                    borderColor.withOpacity(.3),
-                                                borderRadius:
-                                                    const BorderRadius.all(
+                                                color: borderColor.withOpacity(.3),
+                                                borderRadius: const BorderRadius.all(
                                                   Radius.circular(50.0),
                                                 ),
                                                 boxShadow: [
                                                   BoxShadow(
-                                                    color: Colors.grey
-                                                        .withOpacity(0.2),
+                                                    color: Colors.grey.withOpacity(0.2),
                                                     spreadRadius: -2,
                                                     blurRadius: 5,
                                                     offset: const Offset(0, 6),
@@ -298,16 +270,13 @@ class LIstOfProduct extends StatelessWidget {
                                               width: appWidth * 0.090,
                                               height: appWidth * 0.090,
                                               decoration: BoxDecoration(
-                                                color:
-                                                    borderColor.withOpacity(.3),
-                                                borderRadius:
-                                                    const BorderRadius.all(
+                                                color: borderColor.withOpacity(.3),
+                                                borderRadius: const BorderRadius.all(
                                                   Radius.circular(50.0),
                                                 ),
                                                 boxShadow: [
                                                   BoxShadow(
-                                                    color: Colors.grey
-                                                        .withOpacity(0.2),
+                                                    color: Colors.grey.withOpacity(0.2),
                                                     spreadRadius: -2,
                                                     blurRadius: 5,
                                                     offset: const Offset(0, 6),
@@ -328,16 +297,13 @@ class LIstOfProduct extends StatelessWidget {
                                               width: appWidth * 0.090,
                                               height: appWidth * 0.090,
                                               decoration: BoxDecoration(
-                                                color:
-                                                    borderColor.withOpacity(.3),
-                                                borderRadius:
-                                                    const BorderRadius.all(
+                                                color: borderColor.withOpacity(.3),
+                                                borderRadius: const BorderRadius.all(
                                                   Radius.circular(50.0),
                                                 ),
                                                 boxShadow: [
                                                   BoxShadow(
-                                                    color: Colors.grey
-                                                        .withOpacity(0.2),
+                                                    color: Colors.grey.withOpacity(0.2),
                                                     spreadRadius: -2,
                                                     blurRadius: 5,
                                                     offset: const Offset(0, 6),
@@ -357,16 +323,13 @@ class LIstOfProduct extends StatelessWidget {
                                               width: appWidth * 0.090,
                                               height: appWidth * 0.090,
                                               decoration: BoxDecoration(
-                                                color:
-                                                    borderColor.withOpacity(.3),
-                                                borderRadius:
-                                                    const BorderRadius.all(
+                                                color: borderColor.withOpacity(.3),
+                                                borderRadius: const BorderRadius.all(
                                                   Radius.circular(50.0),
                                                 ),
                                                 boxShadow: [
                                                   BoxShadow(
-                                                    color: Colors.grey
-                                                        .withOpacity(0.2),
+                                                    color: Colors.grey.withOpacity(0.2),
                                                     spreadRadius: -2,
                                                     blurRadius: 5,
                                                     offset: const Offset(0, 6),
@@ -386,16 +349,13 @@ class LIstOfProduct extends StatelessWidget {
                                               width: appWidth * 0.090,
                                               height: appWidth * 0.090,
                                               decoration: BoxDecoration(
-                                                color:
-                                                    borderColor.withOpacity(.3),
-                                                borderRadius:
-                                                    const BorderRadius.all(
+                                                color: borderColor.withOpacity(.3),
+                                                borderRadius: const BorderRadius.all(
                                                   Radius.circular(50.0),
                                                 ),
                                                 boxShadow: [
                                                   BoxShadow(
-                                                    color: Colors.grey
-                                                        .withOpacity(0.2),
+                                                    color: Colors.grey.withOpacity(0.2),
                                                     spreadRadius: -2,
                                                     blurRadius: 5,
                                                     offset: const Offset(0, 6),
@@ -415,16 +375,13 @@ class LIstOfProduct extends StatelessWidget {
                                               width: appWidth * 0.090,
                                               height: appWidth * 0.090,
                                               decoration: BoxDecoration(
-                                                color:
-                                                    borderColor.withOpacity(.3),
-                                                borderRadius:
-                                                    const BorderRadius.all(
+                                                color: borderColor.withOpacity(.3),
+                                                borderRadius: const BorderRadius.all(
                                                   Radius.circular(50.0),
                                                 ),
                                                 boxShadow: [
                                                   BoxShadow(
-                                                    color: Colors.grey
-                                                        .withOpacity(0.2),
+                                                    color: Colors.grey.withOpacity(0.2),
                                                     spreadRadius: -2,
                                                     blurRadius: 5,
                                                     offset: const Offset(0, 6),
@@ -442,21 +399,17 @@ class LIstOfProduct extends StatelessWidget {
                                             ),
                                             TextButton(
                                               style: TextButton.styleFrom(
-                                                primary:
-                                                    borderColor, // This is a custom color variable
+                                                primary: borderColor, // This is a custom color variable
                                                 textStyle: const TextStyle(
                                                   color: Colors.white,
                                                 ),
-                                                shape:
-                                                    const RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.all(
+                                                shape: const RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.all(
                                                     Radius.circular(8.0),
                                                   ),
                                                 ),
                                                 elevation: 4,
-                                                padding:
-                                                    const EdgeInsets.all(9.0),
+                                                padding: const EdgeInsets.all(9.0),
                                                 backgroundColor: borderColor,
                                               ),
                                               onPressed: () {},
@@ -522,10 +475,7 @@ class LIstOfProduct extends StatelessWidget {
                           ),
                           Text(
                             "Map",
-                            style: TextStyle(
-                                color: textGrayColor,
-                                fontSize: 19,
-                                fontWeight: FontWeight.w600),
+                            style: TextStyle(color: textGrayColor, fontSize: 19, fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),
@@ -546,10 +496,7 @@ class LIstOfProduct extends StatelessWidget {
                           ),
                           Text(
                             "Filters",
-                            style: TextStyle(
-                                color: textGrayColor,
-                                fontSize: 19,
-                                fontWeight: FontWeight.w600),
+                            style: TextStyle(color: textGrayColor, fontSize: 19, fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),
