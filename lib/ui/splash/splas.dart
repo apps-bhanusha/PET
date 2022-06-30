@@ -147,7 +147,7 @@ class _SplashState extends State<Splash> {
     Future.delayed(Duration(seconds: 3), () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const OrderHistory()),
+        MaterialPageRoute(builder: (context) => const Login()),
       );
     });
   }

@@ -91,12 +91,12 @@ class LIstOfProduct extends StatelessWidget {
                             width: appWidth * 0.650,
                             child: TextFormField(
                               onTap: () {},
-                              decoration: const InputDecoration(
+                              decoration:  InputDecoration(
                                 border: InputBorder.none,
                                 hintText: "Where do you want to go?",
                                 hintStyle: TextStyle(
-                                  color: Colors.grey.,
-                                  fontSize: 17,
+                                  color: Colors.grey.shade300,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
@@ -154,7 +154,7 @@ class LIstOfProduct extends StatelessWidget {
                                 ),
                               ),
                               Container(
-                                padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                                padding: EdgeInsets.fromLTRB(10, 0, 10, 5),
                                 child: Column(
                                   children: [
                                     Row(
@@ -165,7 +165,7 @@ class LIstOfProduct extends StatelessWidget {
                                             Text(
                                               "My Lounge",
                                               style: TextStyle(
-                                                  color: textGrayColor, fontSize: 19, fontWeight: FontWeight.w700),
+                                                  color: textGrayColor, fontSize: 18, fontWeight: FontWeight.w700),
                                             ),
                                             const SizedBox(
                                               width: 8,
@@ -195,14 +195,14 @@ class LIstOfProduct extends StatelessWidget {
                                             Text(
                                               "Renovation Date",
                                               style: TextStyle(
-                                                  color: textGrayColor, fontSize: 17, fontWeight: FontWeight.w700),
+                                                  color: textGrayColor, fontSize: 16, fontWeight: FontWeight.w700),
                                             ),
                                           ],
                                         ),
                                       ],
                                     ),
                                     const SizedBox(
-                                      height: 6,
+                                      height: 5,
                                     ),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -220,7 +220,7 @@ class LIstOfProduct extends StatelessWidget {
                                       ],
                                     ),
                                     const SizedBox(
-                                      height: 3,
+                                      height: 5,
                                     ),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.start,
@@ -294,8 +294,8 @@ class LIstOfProduct extends StatelessWidget {
                                         Row(
                                           children: [
                                             Container(
-                                              width: appWidth * 0.090,
-                                              height: appWidth * 0.090,
+                                              width: appWidth * 0.10,
+                                              height: appWidth * 0.10,
                                               decoration: BoxDecoration(
                                                 color: borderColor.withOpacity(.3),
                                                 borderRadius: const BorderRadius.all(
@@ -312,8 +312,8 @@ class LIstOfProduct extends StatelessWidget {
                                               ),
                                               child: Image.asset(
                                                 'assets/lounges/icoun/towal.png',
-                                                width: 20,
-                                                scale: 2,
+                                                width: 17,
+                                                scale: 2.5,
                                               ),
                                             ),
                                             const SizedBox(
@@ -442,12 +442,12 @@ class LIstOfProduct extends StatelessWidget {
               alignment: const Alignment(0, 0.98),
               child: Container(
                 height: appHeight * 0.055,
-                width: appWidth * .460,
+                width: appWidth * .50,
                 padding: const EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
                   color: backgroundColor,
                   borderRadius: const BorderRadius.all(
-                    Radius.circular(15.0),
+                    Radius.circular(20.0),
                   ),
                   boxShadow: [
                     BoxShadow(
@@ -475,7 +475,7 @@ class LIstOfProduct extends StatelessWidget {
                           ),
                           Text(
                             "Map",
-                            style: TextStyle(color: textGrayColor, fontSize: 19, fontWeight: FontWeight.w600),
+                            style: TextStyle(color: boxBorderC, fontSize: 18, fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),
@@ -496,7 +496,7 @@ class LIstOfProduct extends StatelessWidget {
                           ),
                           Text(
                             "Filters",
-                            style: TextStyle(color: textGrayColor, fontSize: 19, fontWeight: FontWeight.w600),
+                            style: TextStyle(color: boxBorderC, fontSize: 18, fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),

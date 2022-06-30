@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet/test/list_of_product.dart';
+import 'package:pet/ui/splash/splas.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LIstOfProduct(),
+      home:  Splash(),
     );
   }
 }
