@@ -95,7 +95,7 @@ class LIstOfProduct extends StatelessWidget {
                                 border: InputBorder.none,
                                 hintText: "Where do you want to go?",
                                 hintStyle: TextStyle(
-                                  color: Colors.grey,
+                                  color: Colors.grey.,
                                   fontSize: 17,
                                   fontWeight: FontWeight.w600,
                                 ),
