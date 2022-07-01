@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pet/ui/map/map_screen.dart';
 import 'package:pet/utility/utility.dart';
 import 'package:pet/utility/validator.dart';
 
@@ -89,7 +90,7 @@ class _LoginState extends State<Login> {
 
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
     onPressed: (){
-Navigator.push(context, (MaterialPageRoute(builder: (context)=>HomeScreen())));
+Navigator.push(context, (MaterialPageRoute(builder: (context)=>MapScreen())));
 }
 
 )

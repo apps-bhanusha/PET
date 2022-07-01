@@ -37,6 +37,18 @@ dependencies:
   cached_network_image:
   google_maps_flutter:
 
+ #internet connection
+  connectivity:
+
+  shared_preferences:
+  #api integration
+  dio:
+  http:
+  url_launcher:
+  #toast msg
+  fluttertoast:
+
+
 
 dev_dependencies:
   flutter_test:

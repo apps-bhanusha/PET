@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:pet/main.dart';
 import 'package:pet/ui/login/login.dart';
 
 import '../../test/list_item_screen.dart';
@@ -144,6 +145,8 @@ class _SplashState extends State<Splash> {
   }
 
   void startTimer() async {
+    String token = "VQBYkbrk3XwQX2BrSTWCMExRzpXeuB35";
+    baseOptions.headers.addAll({"Authorization": "bearer $token"});
     Future.delayed(Duration(seconds: 3), () {
       Navigator.push(
         context,
