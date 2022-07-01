@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:pet/main.dart';
 import 'package:pet/ui/login/login.dart';
 
-import '../../test/list_item_screen.dart';
-
 class Splash extends StatefulWidget {
   @override
   _SplashState createState() => _SplashState();
@@ -146,7 +144,7 @@ class _SplashState extends State<Splash> {
 
   void startTimer() async {
     String token = "VQBYkbrk3XwQX2BrSTWCMExRzpXeuB35";
-    baseOptions.headers.addAll({"Authorization": "bearer $token"});
+    baseOptions.headers.addAll({"Authorization": "$token"});
     Future.delayed(Duration(seconds: 3), () {
       Navigator.push(
         context,

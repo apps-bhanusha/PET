@@ -1,12 +1,9 @@
-import 'dart:collection';
-
 import 'package:dio/dio.dart';
 import 'package:pet/api/endPoints.dart';
-import 'package:pet/api/server_error.dart';
 import 'package:pet/main.dart';
 import 'package:pet/ui/map/locations.dart';
 
-class ApiProvider{
+class ApiProvider {
   static ApiProvider apiProvider = ApiProvider.internal();
 
   ApiProvider.internal();
@@ -17,12 +14,11 @@ class ApiProvider{
   Future<GetAllTurfResponse> getAllTurfList() async {
     //try {
 
-      Response res = await dio.get(
-        EndPoints.GET_ALL_TURF,options: Options()
+    Response res = await dio.get(
+      EndPoints.GET_ALL_TURF,
+    );
 
-      );
-
-      return GetAllTurfResponse.fromJson(res.toString());
+    return GetAllTurfResponse.fromJson(res.toString());
     // } catch (error) {
     //   String message = "";
     //   if (error is DioError) {

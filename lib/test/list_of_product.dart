@@ -2,12 +2,19 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:pet/ui/map/locations.dart';
 
 import '../utility/utility.dart';
 
-class LIstOfProduct extends StatelessWidget {
-  const LIstOfProduct({Key? key}) : super(key: key);
+class LIstOfProduct extends StatefulWidget {
+  List<GetAllTurfData> getAllTurfData;
+  LIstOfProduct({Key? key, required this.getAllTurfData}) : super(key: key);
 
+  @override
+  State<LIstOfProduct> createState() => _LIstOfProductState();
+}
+
+class _LIstOfProductState extends State<LIstOfProduct> {
   @override
   Widget build(BuildContext context) {
     double appHeight = MediaQuery.of(context).size.height;
@@ -15,29 +22,26 @@ class LIstOfProduct extends StatelessWidget {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
-        title: Padding(
-          padding: EdgeInsets.only(left: appWidth * 0.012),
-          child: Container(
-            height: appHeight * 0.043,
-            width: appWidth * .094,
-            padding: const EdgeInsets.all(4.0),
-            decoration: BoxDecoration(
-              color: borderColor,
-              borderRadius: const BorderRadius.all(
-                Radius.circular(10.0),
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.9),
-                  spreadRadius: 0.40,
-                  blurRadius: 4.5,
-                  // blurStyle: BlurStyle.inner,
-                  offset: const Offset(0, 0),
-                ),
-              ],
+        leading: Container(
+          height: appHeight * 0.05,
+          width: appWidth * 0.05,
+          margin: const EdgeInsets.all(10.0),
+          decoration: BoxDecoration(
+            color: borderColor,
+            borderRadius: const BorderRadius.all(
+              Radius.circular(10.0),
             ),
-            child: Image.asset('assets/lounges/icoun/list.png', color: Colors.white, width: 16, scale: 2.5),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.9),
+                spreadRadius: 0.40,
+                blurRadius: 4.5,
+                // blurStyle: BlurStyle.inner,
+                offset: const Offset(0, 0),
+              ),
+            ],
           ),
+          child: Image.asset('assets/lounges/icoun/list.png', color: Colors.white, width: 16, scale: 2.5),
         ),
         actions: [
           Padding(
@@ -91,7 +95,7 @@ class LIstOfProduct extends StatelessWidget {
                             width: appWidth * 0.650,
                             child: TextFormField(
                               onTap: () {},
-                              decoration:  InputDecoration(
+                              decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: "Where do you want to go?",
                                 hintStyle: TextStyle(
@@ -109,13 +113,13 @@ class LIstOfProduct extends StatelessWidget {
                   ),
                   ListView.builder(
                       shrinkWrap: true,
-                      itemCount: 10,
+                      itemCount: widget.getAllTurfData.length,
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         return Container(
                           margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                           // padding: const EdgeInsets.fromLTRB(10, 14, 10, 7),
-                          height: appHeight * 0.36,
+                          height: appHeight * 0.34,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: const BorderRadius.all(
@@ -145,8 +149,7 @@ class LIstOfProduct extends StatelessWidget {
                                         topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0)),
                                   ),
                                   child: CachedNetworkImage(
-                                    imageUrl:
-                                        "https://lancasterpa.com/wp-content/uploads/2020/07/log-cabin-feature-logo-2.jpg",
+                                    imageUrl: "${widget.getAllTurfData[index].tblTurfImages[0].imageUrl}",
                                     fit: BoxFit.fill,
                                     placeholder: (context, url) => const CircularProgressIndicator(),
                                     errorWidget: (context, url, error) => Icon(Icons.image, size: appWidth * 0.21),
@@ -162,10 +165,16 @@ class LIstOfProduct extends StatelessWidget {
                                       children: [
                                         Row(
                                           children: [
-                                            Text(
-                                              "My Lounge",
-                                              style: TextStyle(
-                                                  color: textGrayColor, fontSize: 18, fontWeight: FontWeight.w700),
+                                            Container(
+                                              width: 120,
+                                              child: Text(
+                                                "${widget.getAllTurfData[index].turfName}",
+                                                style: TextStyle(
+                                                    color: textGrayColor,
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w700,
+                                                    overflow: TextOverflow.ellipsis),
+                                              ),
                                             ),
                                             const SizedBox(
                                               width: 8,
@@ -195,7 +204,7 @@ class LIstOfProduct extends StatelessWidget {
                                             Text(
                                               "Renovation Date",
                                               style: TextStyle(
-                                                  color: textGrayColor, fontSize: 16, fontWeight: FontWeight.w700),
+                                                  color: textGrayColor, fontSize: 14, fontWeight: FontWeight.w700),
                                             ),
                                           ],
                                         ),
@@ -208,14 +217,14 @@ class LIstOfProduct extends StatelessWidget {
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          "Choitram, Indore",
+                                          "${widget.getAllTurfData[index].area}, ${widget.getAllTurfData[index].city}",
                                           style: TextStyle(
-                                              color: textGrayColor, fontSize: 17, fontWeight: FontWeight.w700),
+                                              color: textGrayColor, fontSize: 16, fontWeight: FontWeight.w700),
                                         ),
                                         Text(
-                                          "02 May 2022",
+                                          "${widget.getAllTurfData[index].maintenanceDate}",
                                           style: TextStyle(
-                                              color: textGrayColor, fontSize: 17, fontWeight: FontWeight.w700),
+                                              color: textGrayColor, fontSize: 14, fontWeight: FontWeight.w700),
                                         ),
                                       ],
                                     ),
@@ -225,10 +234,16 @@ class LIstOfProduct extends StatelessWidget {
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          "2.1 Km.",
-                                          style: TextStyle(
-                                              color: textGrayColor, fontSize: 17, fontWeight: FontWeight.w700),
+                                        Container(
+                                          width: 120,
+                                          child: Text(
+                                            "${widget.getAllTurfData[index].turfAddress}",
+                                            style: TextStyle(
+                                                color: textGrayColor,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w700,
+                                                overflow: TextOverflow.ellipsis),
+                                          ),
                                         ),
                                       ],
                                     ),
