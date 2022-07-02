@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:pet/ui/map/locations.dart';
+import 'package:pet/utility/utilitys.dart';
 
 import '../utility/utility.dart';
 
@@ -15,6 +16,12 @@ class LIstOfProduct extends StatefulWidget {
 }
 
 class _LIstOfProductState extends State<LIstOfProduct> {
+List image =[
+  "assets/lounges/icoun/football.png","assets/lounges/icoun/fitness.png"
+];
+List Facilites =[
+  "assets/lounges/icoun/towal.png","assets/lounges/icoun/toilet.png","assets/lounges/icoun/food.png","assets/lounges/icoun/sofa.png"
+];
   @override
   Widget build(BuildContext context) {
     double appHeight = MediaQuery.of(context).size.height;
@@ -119,7 +126,7 @@ class _LIstOfProductState extends State<LIstOfProduct> {
                         return Container(
                           margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                           // padding: const EdgeInsets.fromLTRB(10, 14, 10, 7),
-                          height: appHeight * 0.34,
+                          height: appHeight * 0.33,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: const BorderRadius.all(
@@ -144,14 +151,14 @@ class _LIstOfProductState extends State<LIstOfProduct> {
                                   height: appHeight * 0.160,
                                   width: appWidth,
                                   decoration: const BoxDecoration(
-                                    color: Colors.purple,
+                                    color: Colors.white,
                                     borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0)),
                                   ),
                                   child: CachedNetworkImage(
                                     imageUrl: "${widget.getAllTurfData[index].tblTurfImages[0].imageUrl}",
                                     fit: BoxFit.fill,
-                                    placeholder: (context, url) => const CircularProgressIndicator(),
+                                    placeholder: (context, url) => Center(child: const CircularProgressIndicator()),
                                     errorWidget: (context, url, error) => Icon(Icons.image, size: appWidth * 0.21),
                                   ),
                                 ),
@@ -222,7 +229,7 @@ class _LIstOfProductState extends State<LIstOfProduct> {
                                               color: textGrayColor, fontSize: 16, fontWeight: FontWeight.w700),
                                         ),
                                         Text(
-                                          "${widget.getAllTurfData[index].maintenanceDate}",
+                                          "${Utility.getFormatDate1(DateTime.parse(widget.getAllTurfData[index].maintenanceDate))}",
                                           style: TextStyle(
                                               color: textGrayColor, fontSize: 14, fontWeight: FontWeight.w700),
                                         ),
@@ -253,190 +260,134 @@ class _LIstOfProductState extends State<LIstOfProduct> {
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Row(
-                                          children: [
-                                            Container(
-                                              width: appWidth * 0.090,
-                                              height: appWidth * 0.090,
-                                              decoration: BoxDecoration(
-                                                color: borderColor.withOpacity(.3),
-                                                borderRadius: const BorderRadius.all(
-                                                  Radius.circular(50.0),
-                                                ),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    color: Colors.grey.withOpacity(0.2),
-                                                    spreadRadius: -2,
-                                                    blurRadius: 5,
-                                                    offset: const Offset(0, 6),
+                                        Container(
+                                          margin: EdgeInsets.only(right: 20),
+                                          width: appWidth * 0.21,
+                                          height: appWidth * 0.090,
+                                          child: ListView.builder(shrinkWrap: true,scrollDirection: Axis.horizontal,itemCount: widget.getAllTurfData[index].tblTurfSports.length,itemBuilder: (context,index){
+
+                                           return Row(
+                                              children: [
+                                                Container(
+                                                  width: appWidth * 0.090,
+                                                  height: appWidth * 0.090,
+                                                  decoration: BoxDecoration(
+                                                    color: borderColor.withOpacity(.3),
+                                                    borderRadius: const BorderRadius.all(
+                                                      Radius.circular(50.0),
+                                                    ),
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        color: Colors.grey.withOpacity(0.2),
+                                                        spreadRadius: -2,
+                                                        blurRadius: 5,
+                                                        offset: const Offset(0, 6),
+                                                      ),
+                                                    ],
                                                   ),
-                                                ],
-                                              ),
-                                              child: Image.asset(
-                                                'assets/lounges/icoun/football.png',
-                                                width: 20,
-                                                scale: 2,
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              width: 6,
-                                            ),
-                                            Container(
-                                              width: appWidth * 0.090,
-                                              height: appWidth * 0.090,
-                                              decoration: BoxDecoration(
-                                                color: borderColor.withOpacity(.3),
-                                                borderRadius: const BorderRadius.all(
-                                                  Radius.circular(50.0),
-                                                ),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    color: Colors.grey.withOpacity(0.2),
-                                                    spreadRadius: -2,
-                                                    blurRadius: 5,
-                                                    offset: const Offset(0, 6),
+                                                  child: Image.asset(
+                                                    '${image[index]}',
+                                                    width: 20,
+                                                    scale: 2,
                                                   ),
-                                                ],
-                                              ),
-                                              child: Image.asset(
-                                                'assets/lounges/icoun/fitness.png',
-                                                width: 20,
-                                                scale: 2,
-                                              ),
-                                            ),
-                                          ],
+                                                ),
+                                                const SizedBox(
+                                                  width: 6,
+                                                ),
+                                            //     Container(
+                                            //       width: appWidth * 0.090,
+                                            //       height: appWidth * 0.090,
+                                            //       decoration: BoxDecoration(
+                                            //         color: borderColor.withOpacity(.3),
+                                            //         borderRadius: const BorderRadius.all(
+                                            //           Radius.circular(50.0),
+                                            //         ),
+                                            //         boxShadow: [
+                                            //           BoxShadow(
+                                            //             color: Colors.grey.withOpacity(0.2),
+                                            //             spreadRadius: -2,
+                                            //             blurRadius: 5,
+                                            //             offset: const Offset(0, 6),
+                                            //           ),
+                                            //         ],
+                                            //       ),
+                                            //       child: Image.asset(
+                                            //         'assets/lounges/icoun/fitness.png',
+                                            //         width: 20,
+                                            //         scale: 2,
+                                            //       ),
+                                            //     ),
+                                              ],
+                                            );
+
+                                          }),
                                         ),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              width: appWidth * 0.10,
-                                              height: appWidth * 0.10,
-                                              decoration: BoxDecoration(
-                                                color: borderColor.withOpacity(.3),
-                                                borderRadius: const BorderRadius.all(
-                                                  Radius.circular(50.0),
-                                                ),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    color: Colors.grey.withOpacity(0.2),
-                                                    spreadRadius: -2,
-                                                    blurRadius: 5,
-                                                    offset: const Offset(0, 6),
+                                        Container(
+                                          width: appWidth * 0.40,
+                                          height: appWidth * 0.090,
+                                          child: ListView.builder(shrinkWrap: true,scrollDirection: Axis.horizontal,itemCount: widget.getAllTurfData[index].tblTurfFacilities.length,itemBuilder: (context,index){
+
+                                            return Row(
+                                              children: [
+                                                Container(
+                                                  width: appWidth * 0.090,
+                                                  height: appWidth * 0.090,
+                                                  margin: EdgeInsets.only(right: 5),
+                                                  decoration: BoxDecoration(
+                                                    color: borderColor.withOpacity(.3),
+                                                    borderRadius: const BorderRadius.all(
+                                                      Radius.circular(50.0),
+                                                    ),
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        color: Colors.grey.withOpacity(0.2),
+                                                        spreadRadius: -2,
+                                                        blurRadius: 5,
+                                                        offset: const Offset(0, 6),
+                                                      ),
+                                                    ],
                                                   ),
-                                                ],
-                                              ),
-                                              child: Image.asset(
-                                                'assets/lounges/icoun/towal.png',
-                                                width: 17,
-                                                scale: 2.5,
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              width: 6,
-                                            ),
-                                            Container(
-                                              width: appWidth * 0.090,
-                                              height: appWidth * 0.090,
-                                              decoration: BoxDecoration(
-                                                color: borderColor.withOpacity(.3),
-                                                borderRadius: const BorderRadius.all(
-                                                  Radius.circular(50.0),
-                                                ),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    color: Colors.grey.withOpacity(0.2),
-                                                    spreadRadius: -2,
-                                                    blurRadius: 5,
-                                                    offset: const Offset(0, 6),
-                                                  ),
-                                                ],
-                                              ),
-                                              child: Image.asset(
-                                                'assets/lounges/icoun/toilet.png',
-                                                width: 20,
-                                                scale: 2,
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              width: 6,
-                                            ),
-                                            Container(
-                                              width: appWidth * 0.090,
-                                              height: appWidth * 0.090,
-                                              decoration: BoxDecoration(
-                                                color: borderColor.withOpacity(.3),
-                                                borderRadius: const BorderRadius.all(
-                                                  Radius.circular(50.0),
-                                                ),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    color: Colors.grey.withOpacity(0.2),
-                                                    spreadRadius: -2,
-                                                    blurRadius: 5,
-                                                    offset: const Offset(0, 6),
-                                                  ),
-                                                ],
-                                              ),
-                                              child: Image.asset(
-                                                'assets/lounges/icoun/food.png',
-                                                width: 20,
-                                                scale: 2,
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              width: 6,
-                                            ),
-                                            Container(
-                                              width: appWidth * 0.090,
-                                              height: appWidth * 0.090,
-                                              decoration: BoxDecoration(
-                                                color: borderColor.withOpacity(.3),
-                                                borderRadius: const BorderRadius.all(
-                                                  Radius.circular(50.0),
-                                                ),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    color: Colors.grey.withOpacity(0.2),
-                                                    spreadRadius: -2,
-                                                    blurRadius: 5,
-                                                    offset: const Offset(0, 6),
-                                                  ),
-                                                ],
-                                              ),
-                                              child: Image.asset(
-                                                'assets/lounges/icoun/sofa.png',
-                                                width: 20,
-                                                scale: 2,
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              width: 6,
-                                            ),
-                                            TextButton(
-                                              style: TextButton.styleFrom(
-                                                primary: borderColor, // This is a custom color variable
-                                                textStyle: const TextStyle(
-                                                  color: Colors.white,
-                                                ),
-                                                shape: const RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.all(
-                                                    Radius.circular(8.0),
+                                                  child: Image.asset(
+                                                    '${Facilites[index]}',
+                                                    width: 20,
+                                                    scale: 2,
                                                   ),
                                                 ),
-                                                elevation: 4,
-                                                padding: const EdgeInsets.all(9.0),
-                                                backgroundColor: borderColor,
+
+
+                                              ],
+                                            );
+
+                                          }),
+                                        ),
+
+
+                                        Container(
+                                          width:  appWidth * 0.15,
+                                          child: TextButton(
+                                            style: TextButton.styleFrom(
+                                              primary: borderColor, // This is a custom color variable
+                                              textStyle: const TextStyle(
+                                                color: Colors.white,
                                               ),
-                                              onPressed: () {},
-                                              child: const Text(
-                                                "Book",
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 16,
+                                              shape: const RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.all(
+                                                  Radius.circular(8.0),
                                                 ),
                                               ),
+                                              elevation: 4,
+                                              padding: const EdgeInsets.all(9.0),
+                                              backgroundColor: borderColor,
                                             ),
-                                          ],
+                                            onPressed: () {},
+                                            child: const Text(
+                                              "Book",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 14,
+                                              ),
+                                            ),
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -477,22 +428,27 @@ class _LIstOfProductState extends State<LIstOfProduct> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        children: [
-                          Image.asset(
-                            'assets/lounges/icoun/fillter.png',
-                            width: 28,
-                            scale: 1,
-                            color: borderColor,
-                          ),
-                          const SizedBox(
-                            width: 6,
-                          ),
-                          Text(
-                            "Map",
-                            style: TextStyle(color: boxBorderC, fontSize: 18, fontWeight: FontWeight.w600),
-                          ),
-                        ],
+                      InkWell(
+                        onTap: (){
+                          Navigator.pop(context);
+                        },
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              'assets/lounges/icoun/fillter.png',
+                              width: 28,
+                              scale: 1,
+                              color: borderColor,
+                            ),
+                            const SizedBox(
+                              width: 6,
+                            ),
+                            Text(
+                              "Map",
+                              style: TextStyle(color: boxBorderC, fontSize: 18, fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
                       ),
                       VerticalDivider(
                         thickness: 1.4,

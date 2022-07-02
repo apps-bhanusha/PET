@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:intl/intl.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -51,12 +52,12 @@ class Utility {
   //   return date;
   // }
   //
-  // static String getFormatDate1(DateTime dateTime) {
-  //   String date = DateFormat('dd-MMM-yyyy - ').add_jm().format(dateTime).toString();
-  //   debugPrint("date--> $date");
-  //   return date;
-  // }
-  //
+  static String getFormatDate1(DateTime dateTime) {
+    String date = DateFormat('dd MMM yyyy').format(dateTime).toString();
+    debugPrint("date--> $date");
+    return date;
+  }
+
   // static showSingleAlert(BuildContext context, String msg,
   //     {String? title, Function? onCancel, Function? onOk, String? cancelText, String? okText}) {
   //   showCupertinoDialog(

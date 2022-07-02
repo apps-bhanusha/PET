@@ -21,6 +21,7 @@ class _MapScreenState extends State<MapScreen> {
   final Set<Marker> markers = new Set(); //markers for google map
   static const LatLng showLocation = const LatLng(27.7089427, 85.3086209); //location to show in map
   List<GetAllTurfData> getAllTurfData = [];
+  LatLng? showLocations;
   @override
   void initState() {
     // TODO: implement initState
@@ -35,8 +36,13 @@ class _MapScreenState extends State<MapScreen> {
       log("$result");
       if (result.message == "Success") {
         getAllTurfData = result.data!;
+         showLocations =LatLng(double.parse(getAllTurfData[1].turfLat), double.parse(getAllTurfData[1].turfLong));
         log("getAllTurfData${getAllTurfData[0].turfName}");
         log("getAllTurfData${getAllTurfData[0].tblTurfPrices[0].price}");
+        log("getAllTurfData$showLocations");
+        setState(() {
+
+        });
       } else {
         Utility.showToast(msg: "result.message");
       }
@@ -54,13 +60,14 @@ class _MapScreenState extends State<MapScreen> {
           title: Text("Multiple Markers in Google Map"),
           backgroundColor: Colors.deepOrangeAccent,
         ),
-        body: Stack(children: [
+        body:showLocations==null?Center(child: CircularProgressIndicator()): Stack(children: [
           GoogleMap(
             //Map widget from google_maps_flutter package
             zoomGesturesEnabled: true, //enable Zoom in, out on map
             initialCameraPosition: CameraPosition(
               //innital position in map
-              target: showLocation, //initial position
+              target: showLocations == null?showLocation:showLocations!, //initial position
+
               zoom: 15.0, //initial zoom level
             ),
             markers: getmarkers(), //markers to show on map
@@ -154,11 +161,12 @@ class _MapScreenState extends State<MapScreen> {
 
   Set<Marker> getmarkers() {
     //markers to place on map
+
     setState(() {
       markers.add(Marker(
         //add first marker
-        markerId: MarkerId(showLocation.toString()),
-        position: showLocation, //position of marker
+        markerId: MarkerId(showLocations!.toString()),
+        position: showLocations!, //position of marker
         infoWindow: InfoWindow(
           //popup info
           title: 'Marker Title First ',
@@ -166,34 +174,46 @@ class _MapScreenState extends State<MapScreen> {
         ),
         icon: BitmapDescriptor.defaultMarker, //Icon for Marker
       ));
-
-      markers.add(Marker(
-        //add second marker
-        markerId: MarkerId(showLocation.toString()),
-        position: LatLng(27.7099116, 85.3132343), //position of marker
-        infoWindow: InfoWindow(
-          //popup info
-          title: 'Marker Title Second ',
-          snippet: 'My Custom Subtitle',
-        ),
-        icon: BitmapDescriptor.defaultMarker, //Icon for Marker
-      ));
-
-      markers.add(Marker(
-        //add third marker
-        markerId: MarkerId(showLocation.toString()),
-        position: LatLng(27.7137735, 85.315626), //position of marker
-        infoWindow: InfoWindow(
-          //popup info
-          title: 'Marker Title Third ',
-          snippet: 'My Custom Subtitle',
-        ),
-        icon: BitmapDescriptor.defaultMarker, //Icon for Marker
-      ));
+getAllTurfData.forEach((element) {
+  markers.add(Marker(
+    //add second marker
+    markerId: MarkerId(showLocation.toString()),
+    position: LatLng(double.parse(element.turfLat), double.parse(element.turfLong)), //position of marker
+    infoWindow: InfoWindow(
+      //popup info
+      title: '${element.turfName}',
+      snippet: 'from ₹${element.tblTurfPrices[0].price}',
+    ),
+    icon: BitmapDescriptor.defaultMarker, //Icon for Marker
+  ));
+});
+      // markers.add(Marker(
+      //   //add second marker
+      //   markerId: MarkerId(showLocation.toString()),
+      //   position: LatLng(27.7099116, 85.3132343), //position of marker
+      //   infoWindow: InfoWindow(
+      //     //popup info
+      //     title: 'Marker Title Second ',
+      //     snippet: 'My Custom Subtitle',
+      //   ),
+      //   icon: BitmapDescriptor.defaultMarker, //Icon for Marker
+      // ));
+      //
+      // markers.add(Marker(
+      //   //add third marker
+      //   markerId: MarkerId(showLocation.toString()),
+      //   position: LatLng(27.7137735, 85.315626), //position of marker
+      //   infoWindow: InfoWindow(
+      //     //popup info
+      //     title: 'Marker Title Third ',
+      //     snippet: 'My Custom Subtitle',
+      //   ),
+      //   icon: BitmapDescriptor.defaultMarker, //Icon for Marker
+      // ));
 
       //add more markers here
     });
-
+log("markers$markers");
     return markers;
   }
 }
